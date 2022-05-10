@@ -3,6 +3,7 @@ import Banner from './Banner';
 import Cart from './Cart';
 import ShoppingList from './ShoppingList';
 import logo from '../assets/logo.png'
+import Footer from './Footer';
 
 const App = () => {
   const title = "la maison jungle"
@@ -15,8 +16,12 @@ const App = () => {
           {title.toUpperCase()}
         </h1>
       </Banner>
+      
+      <div style={{display:'flex'}}>
       <Cart />
       <ShoppingList />
+      </div>
+      <Footer/>
     </div>
   )
 }
