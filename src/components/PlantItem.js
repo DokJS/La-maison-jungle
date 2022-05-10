@@ -12,6 +12,7 @@ const PlantItem = (props) => {
             {name.toUpperCase()}
             <CareScale scaleType='water' scaleValue={water} />
             <CareScale scaleType='light' scaleValue={light} />
+            <button>Ajouter au panier</button>
         </li>
     )
 }
