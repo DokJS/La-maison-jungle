@@ -1,12 +1,7 @@
 import React from 'react'
 import { plantList } from '../data/shoppingList'; // Data
+import PlantItem from './PlantItem';
 import '../styles/ShoppingList.css';
-
-const mainStyle = {
-    display: 'flex',
-    flexDirection:'column',
-    alignItems:'center'
-}
 
 const ShoppingList = () => {
         // This contains different category of plant 
@@ -22,11 +17,14 @@ const ShoppingList = () => {
             <li key={index}>{category}</li>
         ));
 
-    const plantNames = plantList.map( ({name,id,isSpecialOffer})=>(
-        <li key={id} className='lmj-plant-item'>
-            {name}
-            {isSpecialOffer && (<div className='lmj-sales'>{'soldes'.toUpperCase()}</div>)}
-            </li>
+    const plantNames = plantList.map( ({name,id,cover,light,water})=>(
+       <PlantItem
+       key={id}
+       name={name}
+       cover={cover}
+       light={light}
+       water={water}
+       />
     ));
    
 
