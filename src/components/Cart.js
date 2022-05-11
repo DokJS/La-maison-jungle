@@ -15,19 +15,18 @@ const Cart = (props) => {
     document.title = `LMJ: ${total} à payer`
   }, [total])
 
- // save cart content into localStorage
-useEffect(()=>{
-  if(cart.length === 0){
-    localStorage.setItem('cart',localStorage.getItem('cart'));
-  }else {
-    localStorage.setItem('cart',JSON.stringify(cart));
-  }
-},[cart]);
+  // This save currentCart inner localStorage
+  useEffect(()=>{
+    if(cart.length !== 0){
+      localStorage.setItem('cart',JSON.stringify(cart));
+    }
+  },[cart]);
 
-// retrieve data from localStorage
-useEffect(()=>{
-  setCart( JSON.parse(localStorage.getItem('cart')))
-},[])
+  // This retrieve prevCart from localStorage
+  useEffect(()=>{
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    setCart(savedCart);
+  },[])
 
   let articles = null;
   // articles display
