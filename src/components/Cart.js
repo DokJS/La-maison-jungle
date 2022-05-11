@@ -6,12 +6,19 @@ const Cart = (props) => {
   const { cart, setCart } = props;
 
   let articles = null;
+   // articles display
   // This let to map only if cart is'nt empty
   cart.length > 0 && ( articles = cart.map(({ name, price, quantity }, index) => {
     return (<div key={index} style={{fontWeight:'bold',marginBottom:'5px'}}>
       {`${name.toUpperCase()}         x${quantity}        ${quantity * price}$`}
     </div>)
   }))
+
+  // total cart
+  let total = 0;
+  cart.length > 0 && ( total = cart.reduce( (acc,current) => {
+    return(acc+=current.price * current.quantity)
+  },0))
   return (
     isOpen ? (<div className='lmj-cart'>
       <button onClick={() => setIsOpen(false)} className="lmj-cart-toggle-button">Fermer</button>
@@ -19,7 +26,7 @@ const Cart = (props) => {
       <ul style={{paddingLeft:'0px'}}>
         {articles}
       </ul>
-      <span>Total : $</span>
+      <span>Total :{total} $</span>
       <button onClick={() => setCart([])}>Vider le panier</button>
     </div>)
       : (
