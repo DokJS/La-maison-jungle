@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/Cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [cart, setCart] = useState(10);
+  const { cart, setCart } = props;
 
 
   return (

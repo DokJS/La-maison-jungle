@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Banner from './Banner';
 import Cart from './Cart';
 import ShoppingList from './ShoppingList';
@@ -7,6 +7,7 @@ import Footer from './Footer';
 
 const App = () => {
   const title = "la maison jungle"
+  const [cart, setCart] = useState([]);
 
   return (
     <div>
@@ -18,8 +19,14 @@ const App = () => {
       </Banner>
       
       <div style={{display:'flex'}}>
-      <Cart />
-      <ShoppingList />
+      <Cart
+      cart={cart}
+      setCart={setCart}
+       />
+      <ShoppingList
+      cart={cart}
+      setCart={setCart} 
+      />
       </div>
       <Footer/>
     </div>
