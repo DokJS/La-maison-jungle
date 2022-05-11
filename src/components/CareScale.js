@@ -7,9 +7,9 @@ const CareScale = (props) => {
     const range = [1,2,3];
 
     const symbol = scaleType === 'light' ? <img src={sun} alt="soleil" /> : <img src={water} alt="water" />;
-    const iconsArr = range.map( value => {
+    const iconsArr = range.map( (value,index) => {
         return(
-            scaleValue >= value && (symbol)
+            scaleValue >= value && (<span key={index}>{symbol}</span>)
         )
     })
 

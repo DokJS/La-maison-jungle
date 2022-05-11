@@ -20,13 +20,14 @@ const ShoppingList = (props) => {
         <li key={index}>{category}</li>
     ));
 
-    const plantNames = plantList.map(({ name, id, cover, light, water }) => (
+    const plantNames = plantList.map(({ name, id, cover, light, water,price }) => (
         <PlantItem
             key={id}
             name={name}
             cover={cover}
             light={light}
             water={water}
+            price={price}
             cart={cart}
             setCart={setCart}
         />
