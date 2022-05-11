@@ -1,26 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react';
 import { plantList } from '../data/shoppingList'; // Data
 import PlantItem from './PlantItem';
+import Categories from './Categories';
 import '../styles/ShoppingList.css';
 
 const ShoppingList = (props) => {
+    const [category, setCategory] = useState('')
     const { cart, setCart } = props;
-    // This contains different category of plant 
+    
+    // This let to filter article displayed en relation of category selected
+    const filterOrNo = category === ''? (plantList)
+    : (plantList.filter(plant => plant.category === category));
 
-
-    const categories = plantList.reduce((acc, current) => {
-        return (
-            acc.includes(current.category) ? acc
-                : acc.concat(current.category)
-        )
-    }, [])
-
-    const categoryList = categories.map((category, index) =>
-    (
-        <li key={index}>{category}</li>
-    ));
-
-    const plantNames = plantList.map(({ name, id, cover, light, water,price }) => (
+    const plantNames = filterOrNo.map(({ name, id, cover, light, water,price }) => (
         <PlantItem
             key={id}
             name={name}
@@ -35,10 +27,10 @@ const ShoppingList = (props) => {
 
 
     return (
-        <div>
-            <ul>
-                {categoryList}
-            </ul>
+        <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+            <Categories
+            category={category}
+            setCategory={setCategory}/>
             <ul className='lmj-plant-list'>
                 {plantNames}
             </ul>
